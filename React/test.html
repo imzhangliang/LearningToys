@@ -11,8 +11,21 @@
 
 <div id="example"></div>
 <script type="text/babel">
+
+function NumberList(props) {
+    let listItems = props.numbers.map(n => <li>{n}</li>);
+
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    );
+}
+
 ReactDOM.render(
-	<h1>Hello, world!</h1>,
+	(
+        <NumberList numbers={[1,2,3,4,5]} />
+    ),
 	document.getElementById('example')
 );
 </script>
