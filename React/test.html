@@ -11,10 +11,24 @@
 
 <div id="example"></div>
 <script type="text/babel">
+
+function NumberList(props) {
+
+	const listItems = props.numbers.map((n) => <li abcd={n.toString()}>{n}</li>)
+
+	return (
+		<ul>
+			{listItems}
+		</ul>
+	);
+}
+
 ReactDOM.render(
-	<h1>Hello, world!</h1>,
-	document.getElementById('example')
-);
+	<NumberList numbers={[1,2,3,4,5]} />,
+	document.getElementById("example")
+)
+
+
 </script>
 
 </body>
