@@ -1,3 +1,5 @@
+---- 外键练习
+
 
 drop table if exists student;
 drop table if exists class;
