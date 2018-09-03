@@ -53,8 +53,26 @@ const posts = [
 	{id:2, title:'Installation', content:'You can install react from npm.'}
 ];
 
+function Table(props) {
+	const a = [1,2,3,4,5,6,7,8,9];
+	const b = [1,2,3,4,5,6,7,8,9];
+
+	return (
+		<table border={1}>
+			{a.map(n => (
+				<tr>
+					{b.map(m => (
+						m <= n ? <td>{m} * {n} = {n*m}</td> : null
+					))}
+				</tr>
+			))}
+		</table>
+	)
+}
+
 //ReactDOM.render(<NumberList numbers={[1,2,3,5,11]}/>, document.getElementById("example"));
-ReactDOM.render(<Blog posts={posts} />, document.getElementById("example"));
+//ReactDOM.render(<Blog posts={posts} />, document.getElementById("example"));
+ReactDOM.render(<Table />, document.getElementById("example"));
 
 
 </script>
