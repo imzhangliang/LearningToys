@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+
+function NumberList(props) {
+	const listItems = props.numbers.map(n => <li key={n.toString()}>{n}</li>);
+
+	return <ul>{listItems}</ul>
+}
+
+
+function Blog(props) {
+	const sidebar = (
+		<ul>
+			{props.posts.map(post => (
+				<li key={post.id}>{post.title}</li>
+			))}
+		</ul>
+	)
+
+	const content = (
+		<div>
+			{props.posts.map(post => (
+				<div key={post.id} id={post.id}>
+					<h3>{post.title}</h3>
+					<p>{post.content}</p>
+				</div>
+			))}
+		</div>
+	)
+
+	return (
+		<div>
+			<div>{sidebar}</div>
+			<hr />
+			<div>{content}</div>
+		</div>
+	);
+}
+
+const posts = [
+	{id:1, title:'Hello World', content:'Welcome to learning ReactJS'},
+	{id:2, title:'Installation', content:'You can install react from npm.'}
+];
+
+//ReactDOM.render(<NumberList numbers={[1,2,3,5,11]}/>, document.getElementById("example"));
+ReactDOM.render(<Blog posts={posts} />, document.getElementById("example"));
+
+
+</script>
+
+</body>
+</html>
