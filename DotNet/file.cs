@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 
+//参考https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-write-to-a-text-file
+
 public class ReadFile {
     static public void Main(){
         //读文件1
