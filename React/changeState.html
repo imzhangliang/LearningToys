@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+
+function BoilingVerdict(props) {
+	if (props.temperature >= 100) {
+		return <p>水烧开了</p>;
+	} else {
+		return <p>水还没有烧开</p>;
+	}
+}
+
+class Calculator extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			temperature: 20
+		};
+	}
+
+	handleChange = event => {
+		this.setState({
+			temperature: event.target.value
+		});
+	}
+
+	render() {
+		return (
+			<form>
+				温度: <input type="text" onChange={this.handleChange} /><br />
+				<BoilingVerdict temperature={this.state.temperature}/>
+			</form>
+		)
+	}
+}
+
+class TemperatureInput extends React.Component {
+	constructor(props) {
+		super(props);
+		console.log(this.props);
+		this.state = {temperature: 0};
+	}
+
+	handleChange = event => {
+		// console.log("OK")
+		// console.log(this.props.onTemperatureChange)
+		// console.log(this.props.temperature);
+		this.props.onTemperatureChange(event.target.value);
+	}
+
+	render() {
+		return (
+			<fieldset>
+				<legend>{`请输入温度（${this.props.scale === 'c' ? '摄氏' : '华式'}）`}</legend>
+				<input type="text" value={this.props.temperature} onChange={this.handleChange} />
+			</fieldset>
+		)
+	}
+}
+
+class Calculator2 extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div>
+				<TemperatureInput scale="c" temperature={30} />
+				<TemperatureInput scale="f" temperature={70} />
+			</div>
+		);
+	}
+}
+
+class Calculator3 extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {scale:"c", temperature: ""}
+	}
+
+	f2c(f) {
+		return (f - 32) * 5 / 9;
+	}
+
+	c2f(c) {
+		return (c * 9 / 5) + 32;
+	}
+
+	onCChange = t => {
+		this.setState({
+			scale: 'c',
+			temperature: t
+		})
+	}
+
+	onFChange = t => {
+		this.setState({
+			scale: 'f',
+			temperature: t
+		})
+	}
+
+	render() {
+		const c = this.state.scale === 'c' ? this.state.temperature : this.f2c(this.state.temperature);
+		const f = this.state.scale === 'f' ? this.state.temperature : this.c2f(this.state.temperature);
+
+		return (
+			<div>
+				<TemperatureInput scale="c" temperature={c} onTemperatureChange={this.onCChange} />
+				<TemperatureInput scale="f" temperature={f} onTemperatureChange={this.onFChange} />
+				<BoilingVerdict temperature={c} />
+			</div>
+		);
+	}
+}
+
+// function Test(props) {
+// 	console.log(props);
+// 	return <p>Test</p>;
+// }
+
+class Test extends React.Component {
+	constructor(props) {
+		super(props);
+		console.log(props);
+	}
+
+	render() {
+		return <p>Test</p>
+	}
+}
+
+
+// ReactDOM.render(<BoilingVerdict temperature={110} />, document.getElementById("example"));
+// ReactDOM.render(<Calculator />, document.getElementById("example"));
+// ReactDOM.render(<TemperatureInput scale="c" temperature="90" onTemperatureChange="111" />, document.getElementById("example"));
+ReactDOM.render(<Calculator3 />, document.getElementById("example"));
+
+
+</script>
+
+</body>
+</html>
