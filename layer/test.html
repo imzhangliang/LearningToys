@@ -1,0 +1,24 @@
+<html>
+<head>
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="layer/layer.js"></script>
+</head>
+<body>
+    <button id="hello">hello</button>
+    <button id="success">success</button>
+    <button id="failure">failure</button>
+<script>
+    $("#hello").click(function(){
+        layer.msg("你好！");
+    })
+
+    $("#success").click(function(){
+        layer.msg("成功!", {icon: 1, time: 2000}, function(){console.log("OK");})
+    });
+
+    $("#failure").click(function(){
+        layer.msg("失败！", {icon: 2});
+    });
+</script>
+</body>
+</html>
