@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+
+
+class NameForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: ''};
+	}
+
+	handleChange = event => {
+		console.log(event.target.value);
+		this.setState({value: event.target.value});
+	}
+
+	handleSubmit = event => {
+		alert(`value has been submitted: ${this.state.value}`);
+		event.preventDefault();
+	}
+
+	render() {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				<label>Name
+					<input type="text" onChange={this.handleChange} />
+				</label>
+				<input type="submit" value="提交" />
+			</form>
+		)
+	}
+}
+
+class MyTextArea extends React.Component {
+	constructor(props) {
+		super(props);
+		
+	}
+
+	render() {
+		return (
+			<form>
+				<textarea value={"sdjfkdjf"} />
+				<input type="submit" value="提交" />
+			</form>
+		);
+	}
+}
+
+class MySelect extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<form>
+				<select value={"orange"}>
+					<option value="bannana">香蕉</option>
+					<option value="apple">苹果</option>
+					<option value="orange">橘子</option>
+					<option value="kiwi">猕猴桃</option>
+				</select>
+			</form>
+		)
+	}
+}
+
+class MyInputs extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: 'zhang',
+			age: 27
+		}
+	}
+
+	handleSubmit = event => {
+		alert(`姓名：${this.state.name} 年龄：${this.state.age}`);
+		event.preventDefault();
+	}
+
+	handleInput = event => {
+		this.setState({[event.target.name]: event.target.value});
+	}
+
+	render() {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				姓名:<input name="name" type="text" value={this.state.name} onChange={this.handleInput} /><br />
+				年龄:<input name="age" type="age" value={this.state.age} onChange={this.handleInput} /><br />
+				<input type="submit" value="提交" />
+			</form>
+		)
+	}
+}
+
+
+//ReactDOM.render(<MyInputs />, document.getElementById("example"));
+ReactDOM.render(<input value={"OK"} />, document.getElementById("example"));
+
+
+</script>
+
+</body>
+</html>
