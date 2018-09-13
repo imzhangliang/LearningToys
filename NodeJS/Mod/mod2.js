@@ -1,6 +1,6 @@
 var config = {
     'aaa': {start: 1, end:2},
-    'bbb': {start: 3, end:4}
+    'bbb': {start: 3, end:2}
 }
 
 function initConfig(config) {
