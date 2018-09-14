@@ -28,11 +28,15 @@ function normalFun2() {
     console.log('normal fun2')
 }
 
+// co(function *(){
+//     yield fun1();
+//     yield fun2();
+//     yield normalFun1;
+//     yield normalFun2;
+// })
+
 co(function *(){
-    yield Promise.resolve().then(fun1);
-    yield Promise.resolve().then(fun2);
-    yield normalFun1;
-    yield normalFun2;
-    
+    fun1();     //不加yield也能执行， yield可以控制执行的顺序
+    fun2();
 })
 
