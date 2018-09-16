@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+
+function FancyBorder(props) {
+	return (
+		<div>
+			{props.children}
+		</div>
+	)
+}
+
+function WelcomeDialog(props) {
+	return (
+		<FancyBorder>
+			<h1 className="dialog-title">
+				Welcome
+			</h1>
+			<p className="dialog-message">
+				Thank you for visiting our spacecraft
+			</p>
+		</FancyBorder>
+	);
+}
+
+
+
+//ReactDOM.render(<MyInputs />, document.getElementById("example"));
+ReactDOM.render(<WelcomeDialog />, document.getElementById("example"));
+
+
+</script>
+
+</body>
+</html>
