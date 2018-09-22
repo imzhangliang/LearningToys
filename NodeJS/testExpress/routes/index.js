@@ -28,16 +28,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/session',  passport.authenticate('local'),
-function(req, res, next){
-  res.jsonp(req.user);
+router.get('/session', function(req, res, next){
+  res.jsonp(req.session.passport);
 })
 
-router.get('/login', passport.authenticate('local', {
-  //session: false,
-  successRedirect: '/ok',
-  failureRedirect: '/no'
-}))
+router.get('/login', passport.authenticate('local'), function(req, res){
+
+  res.jsonp(req.user);
+})
 
 router.get('/ok', function(req, res, next){
   res.send("OK");
