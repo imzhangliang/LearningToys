@@ -54,6 +54,15 @@ router.get('/user', function(req, res, next){
   res.jsonp(req.user);
 })
 
+//退出登录. 注意：req.login()函数在passport.authenticate()中自动调用
+router.get('/logout', function(req, res, next){
+  if (req.user) {
+    req.logout();
+    res.send("退出成功！");
+  } else {
+    res.send("你还没有登录！");
+  }
+})
 
 
 module.exports = router;
