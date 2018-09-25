@@ -1,0 +1,24 @@
+<html>
+<body>
+    <form>
+        <input class="fileupload" type="file" name="file" />
+        <input type="submit" value="提交" />
+    </form>
+
+    <script type="text/javascript" src="js/blueimp-file-upload/js/jquery.fileupload.js" />
+    <script type="text/javascript" src="js/blueimp-file-upload/js/vendor/jquery.ui.widget.js" />
+    <script>
+        $(".fileupload").fileupload({
+            url: "/admin/uploadimg",
+            dataType: "text",
+            done: function (e, data) {
+                if (data.result) {
+                    var path = '/static/images/' + JSON.parse(data.result).files[0].name;
+                    $(this).prev("img").attr("src", path);
+                    $(this).next(":hidden").val(path);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
