@@ -19,8 +19,8 @@
                 done: function (e, data) {
                     if (data.result) {
                         var path = '/images/' + JSON.parse(data.result).files[0].name;
-                        $(this).prev("img").attr("src", path);
-                        $(this).next(":hidden").val(path);
+                        $(this).prev("img").attr("src", path);      //将上传好的图片显示在预览中
+                        $(this).next(":hidden").val(path);          //将上传好的图片url显示在hidden input元素中
                     }
                 }
             });

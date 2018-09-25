@@ -5,8 +5,8 @@ var upload = require('jquery-file-upload-middleware');
 
 
 upload.configure({
-    uploadDir: path.join(__dirname, '../public/images/'),
-    uploadUrl: '/images'
+    uploadDir: path.join(__dirname, '../public/images/'),   //上传存放的目录
+    uploadUrl: '/images'                                    //上传之后的url的目录部分（不包括文件名）
 })
 
 
