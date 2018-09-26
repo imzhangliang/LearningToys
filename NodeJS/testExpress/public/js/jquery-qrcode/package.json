@@ -1,0 +1,54 @@
+{
+  "_from": "git+https://github.com/lrsjng/jquery-qrcode.git",
+  "_id": "jquery-qrcode@0.14.0",
+  "_inBundle": false,
+  "_location": "/jquery-qrcode",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/lrsjng/jquery-qrcode.git",
+    "rawSpec": "git+https://github.com/lrsjng/jquery-qrcode.git",
+    "saveSpec": "git+https://github.com/lrsjng/jquery-qrcode.git",
+    "fetchSpec": "https://github.com/lrsjng/jquery-qrcode.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/lrsjng/jquery-qrcode.git#761ecaa0c94bb45309ea1288b98736c712779a56",
+  "_spec": "git+https://github.com/lrsjng/jquery-qrcode.git",
+  "_where": "/Users/zhangliang/Documents/LearningToys/NodeJS/testExpress",
+  "author": {
+    "name": "Lars Jung",
+    "email": "lrsjng@gmail.com",
+    "url": "https://larsjung.de"
+  },
+  "bugs": {
+    "url": "https://github.com/lrsjng/jquery-qrcode/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Generate QR codes dynamically.",
+  "devDependencies": {
+    "eslint": "2.10.2",
+    "ghu": "0.4.0"
+  },
+  "displayName": "jQuery.qrcode",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "homepage": "https://larsjung.de/jquery-qrcode/",
+  "license": "MIT",
+  "name": "jquery-qrcode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lrsjng/jquery-qrcode.git"
+  },
+  "scripts": {
+    "build": "node ghu.js release",
+    "lint": "eslint .",
+    "precommit": "npm run -s lint && npm run -s build"
+  },
+  "version": "0.14.0"
+}

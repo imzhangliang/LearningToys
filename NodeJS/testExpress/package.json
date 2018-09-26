@@ -15,6 +15,7 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "jquery-file-upload-middleware": "^0.1.8",
+    "jquery-qrcode": "git+https://github.com/lrsjng/jquery-qrcode.git",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"

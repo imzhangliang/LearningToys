@@ -1,0 +1,29 @@
+<html>
+<body>
+<div id="qrcode"></div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-qrcode/dist/jquery-qrcode.min.js"></script>
+<script>
+$(function(){
+
+    var img = document.createElement("img");
+    img.src = "images/node.jpg";    //logo url. logo必须为正方形，否则生成的二维码可能识别不了
+
+    img.onload = function(){
+        $("#qrcode").qrcode({
+            //text: window.location.href,
+            text: "这是一段二维码，你好",
+            size: "100",
+            ecLevel: 'H',
+            minVersion: 4,
+            mode: 4,
+            image: img,         //logo对象配置位置
+            mSize: 0.3 
+        });
+    }
+
+
+});
+</script>
+</body>
+</html>
