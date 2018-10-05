@@ -2,6 +2,8 @@
 <head>
     <meta charset="utf-8">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  
+
     <style>
         body {
             padding-top: 70px;
@@ -21,12 +23,15 @@
         <button type="button" class="btn btn-warning">警告</button>
     </div>
     <div class="container">
-        <button type="button" class="btn btn-default">搜索</button>
+        <!-- glyphicon图标：bootstrap的自带图标。
+            aria-hidden是html5属性，为true是代表改图标仅起装饰作用，避免屏幕识读程序提取内容。
+        -->
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-search" aria-hidden="true"></i> 搜索</button>
         <!-- 按钮组：把多个按钮放在一起 -->
         <div class="btn-group">
-            <button type="button" class="btn btn-default">编辑</button>
-            <button type="button" class="btn btn-default">新增</button>
-            <button type="button" class="btn btn-default">删除</button>
+            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-edit" aria-hidden="true"></i> 编辑</button>
+            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> 新增</button>
+            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i> 删除</button>
         </div>
         
 
