@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 加上 bootstrap-theme样式后，样式有立体渐变的效果 -->
+    <!-- <link href="https://v3.bootcss.com/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    
+  
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 本代码参考https://www.w3schools.com/booTsTrap/bootstrap_ref_css_forms.asp -->
+
+    <!-- 经典的bootstrap表单 -->
+    <div class="container">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label for="username">用户名:</label>
+                    <input type="text" name="username" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="password">密码：</label>
+                    <input type="password" name="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 内联式bootstrap表单: form元素加上form-inline类 -->
+    <div class="container">
+        <div class="col-md-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="username">用户名:</label>
+                    <input type="text" name="username" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="password">密码：</label>
+                    <input type="password" name="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 粘合在一起的表单元素 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon">姓名</span>
+                        <input placeholder="请输入姓名" type="text" class="form-control" />
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default">搜索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
