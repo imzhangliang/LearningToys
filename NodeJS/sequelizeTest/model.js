@@ -16,11 +16,8 @@ const User = sequelize.define('user', {
     }
 })
 
-//force: true为强行创建表选项，即使表存在
-Student.sync({force:true}).then(function(){
-    console.log("数据表1创建成功！")
-})
-
-User.sync({force:true}).then(function(){
-    console.log("数据表2创建成功！")
+// force: true为强行创建表选项，即使表存在
+// 使用sequelize而不使用实体类，表示对所有的表进行sync操作
+sequelize.sync({force: true}).then(function(){
+    console.log("数据表创建成功！");
 })
