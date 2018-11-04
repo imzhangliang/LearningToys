@@ -16,6 +16,15 @@ $(function(){
         sortOrder: 'desc',  //排序顺序
         striped: true,  //条纹格子
         clickToSelect: true,    //点击行的时候自动选择radio或checkbox
+        queryParams: function (params) { //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数
+            var unionParams = {};
+            $.extend(unionParams, params);
+            return unionParams;
+        },
+        responseHandler: function (res) {   //将返回的数据做一些处理
+            var data = res;
+            return data;
+        },
         columns: [
         {
             title: '',
