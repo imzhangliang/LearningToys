@@ -1,0 +1,135 @@
+<html>
+<head>
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="layer/layer.js"></script>
+</head>
+<body>
+    <h2>layer的一些基本用法</h2>
+    <h3>消息框</h3>
+    <button id="hello">hello</button>
+    <button id="success">success</button>
+    <button id="failure">failure</button>
+    <h3>各种图标</h3>
+    <button class="icon">icon0</button>
+    <button class="icon">icon1</button>
+    <button class="icon">icon2</button>
+    <button class="icon">icon3</button>
+    <button class="icon">icon4</button>
+    <button class="icon">icon5</button>
+    <button class="icon">icon6</button>
+    <h3>警告框</h3>
+    <button id="alert">alert</button>
+    <h3>确认框</h3>
+    <button id="okCancel">okCancel</button>
+    <button id="multiButton">多按钮</button>
+
+    <h3>测试阻塞</h3>
+    <p id="time"></p>
+    
+<script>
+
+    //文档页面： https://www.layui.com/doc/modules/layer.html
+    $("#hello").click(function(){
+        layer.msg("你好！");
+    })
+
+    $("#success").click(function(){
+        layer.msg("成功!", {icon: 1, time: 2000}, function(){console.log("OK");})
+    });
+
+    $("#failure").click(function(){
+        layer.msg("失败！", {icon: 2});
+    });
+
+
+    //按照按钮名称来显示不同图标
+    $(".icon").click(function() {
+        let id = $(this).text();
+        id = id.split('icon');
+        id = id[id.length-1]
+        id = +id;
+
+        layer.msg("图标" + id, {icon: id});
+    });
+
+
+    // 警告框：表示提示信息，但需要用户确认。弹出框时候背景不能点击。通常用于较重要的提示消息。不阻塞。
+    $("#alert").click(function(){
+        layer.alert("这里是警告的内容", {
+            title: '警告标题',
+        });
+    });
+
+
+    //确认框
+    $("#okCancel").click(function(){
+        //该确认框虽然会使背景变的不能点击，但不会阻止javascript的主线程，背景的javascript动画或其他动作仍会继续进行
+        layer.confirm(
+            '你确定要删除吗？',
+            {
+                title: '标题',
+                btn: ['删除', '不删'],   //按钮
+                icon: 3
+            },
+            function() {    //第一个按钮
+                layer.msg("已删除");
+            },
+            function() {    //第二个按钮
+                layer.msg("好的，我不删除");
+            }
+        )
+    })
+
+    //多按钮确认框
+    $("#multiButton").click(function(){
+        layer.confirm(
+            '多个按钮，多种选择;多个按钮，多种选择;多个按钮，多种选择;',
+            {
+                btn: ['按钮1', '按钮2', '按钮3', '按钮4', '按钮5'],
+                btn3: function() {
+                    layer.msg("按下按钮3");
+                },
+                btn4: function() {
+                    layer.msg("按下按钮4");
+                },
+                btn5: function() {
+                    layer.msg("按下按钮5");
+                },
+            },
+            function() {
+                layer.msg("按下按钮1");
+            },
+            function() {
+                layer.msg("按下按钮2");
+            }
+        )
+    })
+
+
+
+    //加入时间动态显示，测试弹出层会不会阻塞
+    Date.prototype.Format = function(fmt)   
+    { //author: meizz   
+    var o = {   
+        "M+" : this.getMonth()+1,                 //月份   
+        "d+" : this.getDate(),                    //日   
+        "h+" : this.getHours(),                   //小时   
+        "m+" : this.getMinutes(),                 //分   
+        "s+" : this.getSeconds(),                 //秒   
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+        "S"  : this.getMilliseconds()             //毫秒   
+    };   
+    if(/(y+)/.test(fmt))   
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+    for(var k in o)   
+        if(new RegExp("("+ k +")").test(fmt))   
+    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+    return fmt;   
+    }  
+
+    setInterval(function(){
+        $("#time").text((new Date()).Format("yyyy-MM-dd hh:mm:ss"));
+    }, 1000)
+</script>
+</body>
+</html>
