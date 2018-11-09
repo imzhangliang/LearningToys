@@ -4,11 +4,6 @@
     <script src="layer/layer.js"></script>
 </head>
 <body>
-    <h3>信息框</h3>
-    <button id="hello">hello</button>
-    <button id="success">success</button>
-    <button id="failure">failure</button>
-    <br />
     <h3>弹出层</h3>
     <button id="open0">弹出基本层</button>
     <button id="open1">弹出页面层</button>
@@ -16,17 +11,6 @@
 <script>
     //api文档在 https://www.layui.com/doc/modules/layer.html
 
-    $("#hello").click(function(){
-        layer.msg("你好！");
-    })
-
-    $("#success").click(function(){
-        layer.msg("成功!", {icon: 1, time: 2000}, function(){console.log("OK");})
-    });
-
-    $("#failure").click(function(){
-        layer.msg("失败！", {icon: 2});
-    });
 
     $("#open0").click(function(){   //这个和layer.alert很像，只不过alert参数是layer.alert('字符串')，标题不能改
         layer.open({
