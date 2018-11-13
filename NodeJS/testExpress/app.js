@@ -9,6 +9,7 @@ var passport = require('passport');
 var passportRouter = require('./routes/passport');
 var usersRouter = require('./routes/users');
 var uploadRouter = require('./routes/upload');
+var downloadRouter = require('./routes/download');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(passport.session());
 app.use('/', passportRouter);
 app.use('/users', usersRouter);
 app.use('/', uploadRouter);
+app.use('/', downloadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
