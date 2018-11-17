@@ -1,0 +1,67 @@
+<html>
+<body>
+<h3>通过id获取元素</h3>
+<div id="demo"></div>
+<hr>
+<h3>通过标签名获取元素</h3>
+<p>11111</p>
+<p>22222</p>
+<p>33333</p>
+<hr>
+<h3>通过类名获取元素</h3>
+<div>
+    到附近的看法<span class="class1">class1</span>是短发剪短发<span class="class2">class2</span>
+</div>
+<div>
+    到附近的看法<span class="class2">class2</span>是短发剪短发<span class="class1">class1</span>
+</div>
+<hr>
+<h3>通过dom设置href属性</h3>
+<a id="baidu">baidu</a>
+<hr>
+<h3>通过css标签选择器获取元素</h3>
+<div class="right">类名为right的div</div>
+<div class="left">类名为left的div</div>
+
+<script>
+// 参考 https://www.w3schools.com/js/js_htmldom_elements.asp
+
+
+
+//通过id获取元素
+let demo = document.getElementById("demo");
+console.log(demo);
+demo.innerHTML = '测试的<span style="color: red">html</strong>';
+
+
+//通过标签名获取元素
+let elems = document.getElementsByTagName("p");
+// console.log(elems);
+// console.log(elems[0]);
+
+for (let i = 0; i < elems.length; i++) {
+    elems[i].innerHTML = "段落" + (i+1);
+}
+
+//通过类名字获取元素
+elems = document.getElementsByClassName("class1");
+for (let i = 0; i < elems.length; i++) {
+    elems[i].style.color = "red";   //把class1类的文字设置成红色
+}
+
+
+//通过dom设置href属性
+let baidu = document.getElementById("baidu");
+baidu.href = "https://www.baidu.com"
+
+
+//通过css标签选择器获取元素, 仅支持ie8以后的浏览器
+let rights = document.querySelectorAll("div.right");
+for (let right of rights) {
+    right.style.textAlign = "right";
+}
+
+
+</script>
+</body>
+</html>

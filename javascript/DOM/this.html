@@ -1,0 +1,27 @@
+<html>
+<body>
+    <script>
+        function test2(elem) {
+            console.log(this===window);     //即便是在onclick事件激发的时候this代表的winow
+            elem.innerHTML = "OK2";
+        }
+
+        function displayTime(event) {
+            console.log(event);
+            event.target.innerHTML = new Date();    //event.target为触发事件的dom对象。不一定在所有浏览器中都支持
+        }
+
+        
+    </script>
+    <p onclick="this.innerHTML='OK'">点击我</p> <!-- 内联触发事件 -->
+    <p onclick="test2(this)">点击我2</p> <!-- 绑定事件执行函数 -->
+    <p id="time">点击显示时间</p>   <!-- 通过事件handler回调函数处理 -->
+
+    <script>
+
+    document.getElementById("time").onclick = displayTime;
+    
+    </script>
+    
+</body>
+</html>
