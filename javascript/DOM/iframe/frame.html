@@ -1,0 +1,11 @@
+<html>
+<body>
+    这个是iframe内部的内容
+<script>
+    //下面代码要放在服务器上跑才有效果，要不然会有跨域的问题
+console.log(window.location.href);
+console.log(parent.location.href);
+console.log(parent === parent.window);
+</script>
+</body>
+</html>
