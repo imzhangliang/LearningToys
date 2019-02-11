@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<hr>
+<div id="example2"></div>
+<script type="text/babel">
+
+const numbers = [1,2,3,4,5];
+
+function Numbers() {
+    let lis = numbers.map((number) => <li key={number.toString()}>{number}</li>);
+    return (
+        <ul>
+            {lis}
+        </ul>
+    )
+}
+
+ReactDOM.render(<Numbers />, document.getElementById("example"));
+
+function People() {
+    let people = [
+        {
+            name: 'zhang',
+            age: 27,
+            gender: 'male'
+        },
+        {
+            name: 'liu',
+            age: 22,
+            gender: 'male'
+        },
+        {
+            name: 'wang',
+            age: 19,
+            gender: 'female'
+        },
+        {
+            name: 'xu',
+            age: 33,
+            gender: 'male'
+        },        
+    ];
+
+    let peopleItems = people.map((person) => (
+        <div key={person.name}>
+            <h3>{person.name}</h3>
+            <p>年龄: {person.age}</p>
+            <p>性别：{person.gender == 'male' ? '男' : '女'}</p>
+        </div>
+    ))
+
+    return <div>{peopleItems}</div>
+}
+
+ReactDOM.render(<People />, document.getElementById("example2"));
+
+
+</script>
+
+</body>
+</html>
