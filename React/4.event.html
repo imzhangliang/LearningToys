@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<hr>
+<div id="example2"></div>
+<script type="text/babel">
+
+function clicked() {
+    console.log("Clicked!")
+}
+
+
+ReactDOM.render(<button onClick={clicked}>按钮</button>, document.getElementById("example"));
+
+class Toggle extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {isToggleOn: false}
+        this.switch = this.switch.bind(this);
+    }
+
+    switch = () => {
+        //这个地方注意： 在大括号外面要加上小括号，要不然会把大括号内的key-value当成是语句
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }))
+    }
+
+    render() {
+        return (
+            <button onClick={this.switch}>
+                {this.state.isToggleOn ? '开' : '关'}
+            </button>
+        )
+    }
+}
+
+ReactDOM.render(<Toggle />, document.getElementById("example2"));
+
+
+</script>
+
+</body>
+</html>

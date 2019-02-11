@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<hr>
+<div id="example2"></div>
+<script type="text/babel">
+
+class Clock extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {date: new Date()}
+    }
+
+    componentDidMount() {
+        this.timerId = setInterval(() => {
+            this.setState({date: new Date()})
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
+    render() {
+        return (
+            <div>
+                <h3>时间</h3>
+                <p>现在世界是 {this.state.date.toLocaleTimeString()}</p>
+            </div>
+        )
+    }
+}
+
+function App() {
+    return (
+        <div>
+            <Clock />
+            <Clock />
+            <Clock />
+        </div>
+    )
+}
+
+ReactDOM.render(<Clock />, document.getElementById("example"));
+ReactDOM.render(<App />, document.getElementById("example2"));
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+
+function GuestGreeting() {
+    return (
+        <h3>欢迎你，游客</h3>
+    )
+}
+
+function UserGreeting(props) {
+    return (
+        <h3>欢迎你，{props.username}</h3>
+    )
+}
+
+function Greeting(props) {
+    if (props.isLogin) {
+        return <UserGreeting username={props.username} />
+    } else {
+        return <GuestGreeting />
+    }
+}
+
+ReactDOM.render(
+    <Greeting isLogin={true} username="Michael" />,
+    document.getElementById("example")
+)
+
+</script>
+
+</body>
+</html>

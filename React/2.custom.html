@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<hr>
+<div id="example2"></div>
+<hr>
+<div id="example3"></div>
+
+<script type="text/babel">
+
+function Welcome(props) {
+    return <h1>你好，{props.name}</h1>;
+}
+
+
+
+function App() {
+    return (
+        <div>
+            <Welcome name="张" />
+            <Welcome name="李" />
+            <Welcome name="刘" />
+        </div>
+    )
+}
+
+function tick() {
+    const element = (
+        <div>
+            <p>现在时间是：{new Date().toLocaleTimeString()}</p>
+        </div>
+    );
+
+    ReactDOM.render(
+        element,
+        document.getElementById("example3")
+    )
+}
+
+ReactDOM.render(<Welcome name="Michael" />, document.getElementById("example"));
+ReactDOM.render(<App />, document.getElementById("example2"));
+
+setInterval(() => {
+    tick();
+}, 1000);
+
+
+
+</script>
+
+</body>
+</html>
