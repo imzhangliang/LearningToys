@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+
+<div id="example"></div>
+<hr>
+<div id="example2"></div>
+<hr>
+<div id="example3"></div>
+
+<script type="text/babel">
+
+class NameForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {name: ''};
+
+    }
+
+    handleChange = (event) => {
+        this.setState({name: event.target.value.toUpperCase()});    //加上toUpperCase可以限制输入仅为大写字母
+        console.log(event.target.value);
+    }
+
+    handleSubmit = (event) => {
+        console.log("提交：" + this.state.name);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    姓名:
+                    <input type="text" placeholder="请输入你的姓名。" value={this.state.name} onChange={this.handleChange} />
+                </label>
+                <input type="submit" />
+            </form>
+        )
+    }
+}
+
+ReactDOM.render(<NameForm />, document.getElementById("example"));
+
+class FlavorForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {select: '可可味'};        // 默认值，需在多个选项中的其中一个
+    }
+
+    handleChange = (event) => {
+        this.setState({select: event.target.value})
+        console.log(event.target.value)
+    }
+
+    handleSubmit = (event) => {
+        console.log("提交：" + this.state.select);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    请挑选你喜欢的口味：
+                    <select value={this.state.select} onChange={this.handleChange}>
+                        <option>葡萄味</option>
+                        <option>酸橙味</option>
+                        <option>可可味</option>
+                        <option>芒果味</option>
+                    </select>
+                </label>
+                <input type="submit" />
+            </form>
+        )
+    }
+}
+
+ReactDOM.render(<FlavorForm />, document.getElementById("example2"));
+
+class RegisterForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {username:'', password:''}
+    }
+
+    handleInput = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    用户名：
+                    <input type="text" name="username" onChange={this.handleInput} value={this.state.username} />
+                </label>
+                <label>
+                    用户名：
+                    <input type="password" name="password" onChange={this.handleInput} value={this.state.password} />
+                </label>
+                <input type="submit" />
+            </form>
+        )
+    }
+}
+
+
+ReactDOM.render(<RegisterForm />, document.getElementById("example3"))
+
+
+</script>
+
+</body>
+</html>
